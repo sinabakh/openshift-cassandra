@@ -34,7 +34,8 @@ COPY docker-entrypoint.sh \
 COPY docker-entrypoint-stateful-sets.sh \
      /opt/apache-cassandra/bin/
 
-     
+ADD scripts /opt/apache-cassandra/scripts/
+
 ADD cassandra.yaml.template /opt/apache-cassandra/conf/cassandra.yaml
 
 RUN groupadd -r cassandra -g 312 && \
