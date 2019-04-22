@@ -48,7 +48,8 @@ RUN groupadd -r cassandra -g 312 && \
 
 RUN  mkdir -p /var/lib/cassandra \
 	&& chown -R cassandra:cassandra /var/lib/cassandra \
-	&& chmod 777 /var/lib/cassandra  && chmod +x /opt/apache-cassandra/bin/docker-entrypoint.sh && chmod +x /opt/apache-cassandra/bin/docker-entrypoint-stateful-sets.sh
+	&& chmod 777 /var/lib/cassandra  && chmod +x /opt/apache-cassandra/bin/docker-entrypoint.sh && chmod +x /opt/apache-cassandra/bin/docker-entrypoint-stateful-sets.sh \
+	&& chmod +x /opt/apache-cassandra/scripts/ready-probe.sh
 
 USER 313	
 
