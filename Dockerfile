@@ -12,7 +12,7 @@ ENV CASSANDRA_VERSION="3.11.4" \
 
 USER root
 
-RUN yum install -y -q bind-utils && \
+RUN yum install -y -q bind-utils netstat mtr && \
    yum clean all
 
 RUN cd /opt &&\
