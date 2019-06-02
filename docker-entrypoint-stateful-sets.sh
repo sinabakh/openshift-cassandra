@@ -2,6 +2,14 @@
 
 echo $CASSANDRA_SEEDS
 
+my_ip=$(hostname --ip-address)
+
+CASSANDRA_SEEDS=$(host $CASSANDRA_SEEDS_SERVICE)
+if [ -z "$CASSANDRA_SEEDS" ]; then
+  CASSANDRA_SEEDS=$my_ip
+fi
+
+echo $CASSANDRA_SEEDS
 
 sed -i 's/${SEEDS}/'$CASSANDRA_SEEDS'/g' /opt/apache-cassandra/conf/cassandra.yaml
 
