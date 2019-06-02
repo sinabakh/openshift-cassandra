@@ -4,8 +4,8 @@ echo $CASSANDRA_SEEDS
 
 my_ip=$(hostname --ip-address)
 
-CASSANDRA_SEEDS=$(host $CASSANDRA_SEEDS_SERVICE)
-if [ -z "$CASSANDRA_SEEDS" ]; then
+CASSANDRA_SEEDS_RESOLVE=$(host $CASSANDRA_SEEDS)
+if [ -z "$CASSANDRA_SEEDS_RESOLVE" ]; then
   CASSANDRA_SEEDS=$my_ip
 fi
 
