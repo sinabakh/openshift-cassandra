@@ -2,21 +2,7 @@
 
 echo $CASSANDRA_SEEDS
 
-my_ip=$(hostname --ip-address)
-
-CASSANDRA_SEEDS_RESOLVE=$(host $CASSANDRA_SEEDS)
-if [ -z "$CASSANDRA_SEEDS_RESOLVE" ]; then
-  CASSANDRA_SEEDS=$my_ip
-fi
-
-echo $CASSANDRA_SEEDS
-
 sed -i 's/${SEEDS}/'$CASSANDRA_SEEDS'/g' /opt/apache-cassandra/conf/cassandra.yaml
-
-if [ ! -z "$CASSANDRA_SEEDS" ]; then
-    export CASSANDRA_SEEDS
-fi
-
 
 mkdir -p /var/lib/cassandra/data
 mkdir -p /var/lib/cassandra/commitlog
