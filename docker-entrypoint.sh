@@ -5,6 +5,11 @@ sleep 5
 
 my_ip=$(hostname --ip-address)
 
+CASSANDRA_SEEDS=$(host $PEER_DISCOVERY_SERVICE)
+if [ -z "$CASSANDRA_SEEDS" ]; then
+  PEER_DISCOVERY_SERVICE=$my_ip
+fi
+
 CASSANDRA_SEEDS=$(host $PEER_DISCOVERY_SERVICE | \
     grep -v "not found" | \
     grep -v "connection timed out" | \
